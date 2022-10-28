@@ -7,7 +7,7 @@ clean:
 
 run:
 	$(MAKE) build
-	go run greeter_server/main.go
+	go run src/main.go
 
 run_client:
-	go run greeter_client/main.go
+	go run client/main.go
