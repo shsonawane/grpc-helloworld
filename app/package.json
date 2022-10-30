@@ -12,8 +12,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "proto-gen": "protoc --proto_path=../proto --js_out=import_style=commonjs,binary:./src/gen/ --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src/gen/ ../proto/helloworld.proto"
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@grpc/grpc-js": "~1.1.8",
