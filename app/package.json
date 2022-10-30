@@ -1,0 +1,31 @@
+{
+  "name": "grpc-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "grpc-app",
+  "author": "shubham",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "proto-gen": "protoc --proto_path=../proto --js_out=import_style=commonjs,binary:./src/gen/ --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src/gen/ ../proto/helloworld.proto"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "~1.1.8",
+    "@grpc/proto-loader": "~0.5.4",
+    "gatsby": "^4.24.5",
+    "grpc-web": "^1.4.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "async": "~3.2.3",
+    "google-protobuf": "~3.14.0",
+    "lodash": "~4.17.0",
+    "webpack": "~4.43.0",
+    "webpack-cli": "~3.3.11"
+  }
+}
