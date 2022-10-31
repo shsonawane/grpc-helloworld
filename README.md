@@ -1,25 +1,23 @@
-# gRPC Hello World
+# 3G (gRPC,Go, Gatsby) Hello World 👋
 
 Follow these setup to run the [quick start][] example:
 
- 1. Get the code:
+ 1. Generate protos:
 
     ```console
-    $ go get google.golang.org/grpc/examples/helloworld/greeter_client
-    $ go get google.golang.org/grpc/examples/helloworld/greeter_server
+    make proto-buff
     ```
 
- 2. Run the server:
+ 2. Run the service:
 
     ```console
-    $ $(go env GOPATH)/bin/greeter_server &
+    make run-service
     ```
 
- 3. Run the client:
+ 3. Run the web application:
 
     ```console
-    $ $(go env GOPATH)/bin/greeter_client
-    Greeting: Hello world
+    make app
     ```
 
 For more details (including instructions for making a small change to the
