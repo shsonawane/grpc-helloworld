@@ -1,4 +1,5 @@
 import * as React from "react"
+import { sayHello } from "../api/helloworld";
 
 const pageStyles = {
   color: "#232129",
@@ -124,13 +125,23 @@ const links = [
 ]
 
 const IndexPage = () => {
+
+  const [title, setTitle] = React.useState();
+
+  const onClick = async () => {
+    const { message } = await sayHello("Gatsby");
+    console.log(message);
+    setTitle(message);
+  }
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
-        Congratulations
+      Congratulations!
         <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
+        <hr />
+        <span style={headingAccentStyles}>{title}</span>
       </h1>
+      <button onClick={onClick}>SayHello</button>
       <p style={paragraphStyles}>
         Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
         update in real-time. 😎
