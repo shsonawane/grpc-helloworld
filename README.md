@@ -1,4 +1,4 @@
-# gRPC Go/Gatsby Hello World 👋
+# 3G (gRPC,Go, Gatsby) Hello World 👋
 
 Follow these setup to run the [quick start][] example:
 
