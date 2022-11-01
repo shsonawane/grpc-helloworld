@@ -1,12 +1,7 @@
-# build stage
-FROM golang:alpine AS build-env
-RUN apk --no-cache add build-base
-ADD ./src /src
-WORKDIR /src
-RUN go get ./...&& go build -o goapp
+FROM golang:1.16.3-buster
 
-# final stage
-FROM alpine
-WORKDIR /app
-COPY --from=build-env /src/goapp /app/
-ENTRYPOINT ./goapp
+WORKDIR /app/src
+RUN go get github.com/cespare/reflex 
+RUN echo "cd /app/src && reflex -r '\.go\$' -s -- sh -c 'go mod tidy && go run main.go'" >> /run.sh
+RUN sed -i 's/\r//' /run.sh
+ENTRYPOINT ["sh", "/run.sh"]
