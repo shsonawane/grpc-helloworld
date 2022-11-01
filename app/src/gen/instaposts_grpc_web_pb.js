@@ -77,33 +77,33 @@ proto.helloworld.InstaPostPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.helloworld.Request,
- *   !proto.helloworld.Response>}
+ *   !proto.helloworld.InstaPostRequest,
+ *   !proto.helloworld.InstaPostResponse>}
  */
 const methodDescriptor_InstaPost_GetPosts = new grpc.web.MethodDescriptor(
   '/helloworld.InstaPost/GetPosts',
   grpc.web.MethodType.UNARY,
-  proto.helloworld.Request,
-  proto.helloworld.Response,
+  proto.helloworld.InstaPostRequest,
+  proto.helloworld.InstaPostResponse,
   /**
-   * @param {!proto.helloworld.Request} request
+   * @param {!proto.helloworld.InstaPostRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.helloworld.Response.deserializeBinary
+  proto.helloworld.InstaPostResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.helloworld.Request} request The
+ * @param {!proto.helloworld.InstaPostRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.helloworld.Response)}
+ * @param {function(?grpc.web.RpcError, ?proto.helloworld.InstaPostResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.helloworld.Response>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.helloworld.InstaPostResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.helloworld.InstaPostClient.prototype.getPosts =
@@ -118,11 +118,11 @@ proto.helloworld.InstaPostClient.prototype.getPosts =
 
 
 /**
- * @param {!proto.helloworld.Request} request The
+ * @param {!proto.helloworld.InstaPostRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.helloworld.Response>}
+ * @return {!Promise<!proto.helloworld.InstaPostResponse>}
  *     Promise that resolves to the response
  */
 proto.helloworld.InstaPostPromiseClient.prototype.getPosts =

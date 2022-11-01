@@ -13,8 +13,6 @@ services:
   hello-server:
     build:
       context: ./service
-      dockerfile: Dockerfile
-    volumes:
-      - ./service:/app
+      dockerfile: Dockerfile.prod
     ports:
       - "9090:9090"

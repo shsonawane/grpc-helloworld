@@ -1,5 +1,6 @@
 import * as React from "react"
 import { sayHello } from "../api/helloworld";
+import { getPostStats } from "../api/instapost";
 
 const pageStyles = {
   color: "#232129",
@@ -129,9 +130,11 @@ const IndexPage = () => {
   const [title, setTitle] = React.useState();
 
   const onClick = async () => {
-    const { message } = await sayHello("Gatsby");
+   const { message } = await sayHello("Gatsby");
     console.log(message);
     setTitle(message);
+    const stats = await getPostStats();
+    alert(stats);
   }
   return (
     <main style={pageStyles}>

@@ -6,7 +6,11 @@ proto-buff:
 
 run-service:
 	@echo "--> Starting service"
-	@docker-compose up
+	@docker-compose up --abort-on-container-exit --build
+
+run-service-prod:
+	@echo "--> Starting service"
+	@docker-compose -f docker-compose-prod.yaml up  --build
 
 run-app:
 	@echo "--> Starting web app"
