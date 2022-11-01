@@ -5,14 +5,14 @@ option go_package = "gen/proto";
 package helloworld;
 
 service InstaPost {
-  rpc GetPosts (Request) returns (Response) {}
+  rpc GetPosts (InstaPostRequest) returns (InstaPostResponse) {}
 }
 
-message Request {
+message InstaPostRequest {
   string id = 1;
 }
 
 // The response message containing the greetings
-message Response {
+message InstaPostResponse {
   string stats = 1;
 }

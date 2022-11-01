@@ -17,6 +17,7 @@ var (
 
 func registerServers(s grpc.ServiceRegistrar) {
 	api.RegisterGreeterServer(s)
+	api.RegisterInstaPostServer(s)
 }
 
 func main() {

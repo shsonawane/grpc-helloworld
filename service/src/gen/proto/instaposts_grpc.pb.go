@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type InstaPostClient interface {
-	GetPosts(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	GetPosts(ctx context.Context, in *InstaPostRequest, opts ...grpc.CallOption) (*InstaPostResponse, error)
 }
 
 type instaPostClient struct {
@@ -33,8 +33,8 @@ func NewInstaPostClient(cc grpc.ClientConnInterface) InstaPostClient {
 	return &instaPostClient{cc}
 }
 
-func (c *instaPostClient) GetPosts(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
+func (c *instaPostClient) GetPosts(ctx context.Context, in *InstaPostRequest, opts ...grpc.CallOption) (*InstaPostResponse, error) {
+	out := new(InstaPostResponse)
 	err := c.cc.Invoke(ctx, "/helloworld.InstaPost/GetPosts", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -46,7 +46,7 @@ func (c *instaPostClient) GetPosts(ctx context.Context, in *Request, opts ...grp
 // All implementations must embed UnimplementedInstaPostServer
 // for forward compatibility
 type InstaPostServer interface {
-	GetPosts(context.Context, *Request) (*Response, error)
+	GetPosts(context.Context, *InstaPostRequest) (*InstaPostResponse, error)
 	mustEmbedUnimplementedInstaPostServer()
 }
 
@@ -54,7 +54,7 @@ type InstaPostServer interface {
 type UnimplementedInstaPostServer struct {
 }
 
-func (UnimplementedInstaPostServer) GetPosts(context.Context, *Request) (*Response, error) {
+func (UnimplementedInstaPostServer) GetPosts(context.Context, *InstaPostRequest) (*InstaPostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPosts not implemented")
 }
 func (UnimplementedInstaPostServer) mustEmbedUnimplementedInstaPostServer() {}
@@ -71,7 +71,7 @@ func RegisterInstaPostServer(s grpc.ServiceRegistrar, srv InstaPostServer) {
 }
 
 func _InstaPost_GetPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Request)
+	in := new(InstaPostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -83,7 +83,7 @@ func _InstaPost_GetPosts_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/helloworld.InstaPost/GetPosts",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InstaPostServer).GetPosts(ctx, req.(*Request))
+		return srv.(InstaPostServer).GetPosts(ctx, req.(*InstaPostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
